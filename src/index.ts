@@ -10,6 +10,7 @@ const server = serve({
       async GET(req) {
         return Response.json({
           message: "Hello, world!",
+          version: Bun.version,
           method: "GET",
         });
       },
@@ -21,7 +22,7 @@ const server = serve({
       },
     },
 
-    "/api/hello/:name": async req => {
+    "/api/hello/:name": async (req) => {
       const name = req.params.name;
       return Response.json({
         message: `Hello, ${name}!`,
@@ -39,3 +40,5 @@ const server = serve({
 });
 
 console.log(`🚀 Server running at ${server.url}`);
+
+export default server;
