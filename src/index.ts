@@ -36,11 +36,12 @@ const server = serve({
       const name = req.params.name;
       return Response.json({
         message: `Hello, ${name}!`,
+        bunVersion: Bun.version,
       });
     },
   },
 
-  development: process.env.NODE_ENV !== "production" && {
+  development: {
     // Enable browser hot reloading in development
     hmr: true,
 

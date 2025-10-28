@@ -4,10 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "bun run --bun --hot src/index.ts",
+    "dev": "bun run --bun --hot --watch src/index.ts",
     "start": "NODE_ENV=production bun run --bun src/index.ts",
-    "build": "bun run build.ts --target=bun"
+    "//build": "bun run build.ts --target=bun"
   },
+  "files": [
+    "src"
+  ],
   "dependencies": {
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-select": "^2.2.6",
