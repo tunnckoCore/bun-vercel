@@ -11,14 +11,17 @@ const server = serve({
 
     "/api/hello": {
       async GET(req) {
-        const file = Bun.file(path.join(import.meta.dir, "some-data.json"));
-        const data = await file.json();
+        // console.log("import.meta.dir", import.meta.dir);
+        // const file = Bun.file(path.join(import.meta.dir, "some-data.json"));
+        // console.log("bruh", file);
+        // const data = await file.json();
 
+        // console.log("bruh data", data);
         return Response.json({
           message: "Hello world from Vercel Bun!",
           bunVersion: Bun.version,
           method: "GET",
-          data,
+          // data,
         });
       },
       async PUT(req) {
