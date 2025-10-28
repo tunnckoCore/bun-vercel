@@ -1,17 +1,24 @@
 import { serve } from "bun";
+import path from "node:path";
+
 import index from "./index.html";
 
 const server = serve({
+  port: 3000,
   routes: {
     // Serve index.html for all unmatched routes.
     "/*": index,
 
     "/api/hello": {
       async GET(req) {
+        const file = Bun.file(path.join(import.meta.dir, "some-data.json"));
+        const data = await file.json();
+
         return Response.json({
-          message: "Hello, world!",
-          version: Bun.version,
+          message: "Hello world from Vercel Bun!",
+          bunVersion: Bun.version,
           method: "GET",
+          data,
         });
       },
       async PUT(req) {
@@ -39,6 +46,4 @@ const server = serve({
   },
 });
 
-console.log(`🚀 Server running at ${server.url}`);
-
-export default server;
+console.log("Server running on port", server.url.toString());
